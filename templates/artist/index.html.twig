@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artist{% endblock %}
+
+{% block body %}
+    <h1>Artist</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Debut</th>
+            <th>Ended</th>
+            <th>Origin</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for artist in artists %}
+            <tr>
+                <td>{{ artist.id }}</td>
+                <td>{{ artist.name }}</td>
+                <td>{{ artist.debut |date('d-m-Y')}}</td>
+                <td>{{ artist.ended |date('d-m-Y')}}</td>
+                <td>{{ artist.origin}}</td>
+                <td>
+                    <a href="{{ path('artist_edit', {'id': artist.id}) }}">edit</a>
+                    <a href="{{ path('album_index', {'artist_id': artist.id}) }}">albums</a>
+                    <a href="{{ path('songs_by_artist', {'artist_id': artist.id}) }}">songs</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('artist_new') }}">Create new</a>
+{% endblock %}

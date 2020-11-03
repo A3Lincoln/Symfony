@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concert{% endblock %}
+
+{% block body %}
+    <h1>Concert</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Artist</th>
+            <th>Date</th>
+            <th>City</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for concert in concerts %}
+            <tr>
+                <td>{{ concert.id }}</td>
+                <td>{{ concert.artist.name }}</td>
+                <td>{{ concert.date |date('d-m-Y')}}</td>
+                <td>{{ concert.city}}</td>
+
+                <td>
+
+                    <a href="{{ path('concert_edit', {'id': concert.id}) }}">edit</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('concert_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New song{% endblock %}
+
+{% block body %}
+    <h1>Create new {{ entityName }}</h1>
+    {{ include('_form.html.twig') }}
+
+    <a href="{{ path(entityName ~ '_index', {'album_id':album_id}) }}">back to list</a>
+{% endblock %}

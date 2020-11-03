@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit {{ entityName }}{% endblock %}
+
+{% block body %}
+    <h1>Edit {{ entityName }}</h1>
+
+    {{ include('_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path(entityName ~ '_delete', {'id':entity.id}) }}">delete</a><br>
+    <a href="{{ path(entityName ~ '_index', {'artist_id':artist_id}) }}">back to list</a>
+  {#   {{ dump(entityName) }}
+     {{ include('_delete_form.html.twig') }} #}
+
+
+{% endblock %}
